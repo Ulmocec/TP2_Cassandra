@@ -1,0 +1,63 @@
+
+========== queries/requetes_metier.sql ==========
+
+>>> SELECT * FROM stations WHERE station_id = '1117'
+    Row(station_id='1117', capacity=27, latitude=48.860089892617, longitude=2.344057559967, name='Pont Neuf - Rivoli', opening_hours=None)
+
+>>> SELECT * FROM stations_dispo WHERE station_id = '1117'
+    Row(station_id='1117', duedate='2026-10-06T11:26:29+00:00', ebike=12, is_installed='OUI', is_renting='OUI', is_returning='OUI', mechanical=12, numbikesavailable=24, numdocksavailable=1)
+
+>>> SELECT arrondissement, capacity, station_id, name
+FROM stations_by_arrondissement
+WHERE arrondissement = 'Montrouge'
+    Row(arrondissement='Montrouge', capacity=36, station_id='21219', name='Amaury Duval - Gabriel Péri')
+    Row(arrondissement='Montrouge', capacity=33, station_id='21215', name='Verdier - Jean Jaurès')
+    Row(arrondissement='Montrouge', capacity=31, station_id='21204', name="Estienne d'Orves - Henri Ginoux")
+    Row(arrondissement='Montrouge', capacity=30, station_id='21209', name='Molière - République')
+    Row(arrondissement='Montrouge', capacity=29, station_id='21207', name='Verdier - République')
+    Row(arrondissement='Montrouge', capacity=26, station_id='21205', name='Arthur Auger - Jean Jaurès')
+    Row(arrondissement='Montrouge', capacity=26, station_id='21217', name='Louis Rolland - République')
+    Row(arrondissement='Montrouge', capacity=25, station_id='14116', name='Romain Rolland')
+    Row(arrondissement='Montrouge', capacity=25, station_id='21213', name='Vanne - Général de Gaulle')
+    Row(arrondissement='Montrouge', capacity=25, station_id='21216', name='Louis Lejeune - Barbès')
+    Row(arrondissement='Montrouge', capacity=22, station_id='21212', name='Marne - Germain Dardan')
+    Row(arrondissement='Montrouge', capacity=18, station_id='21218', name='Gabriel Péri - Place de la Libération')
+
+>>> SELECT arrondissement, capacity, station_id, name
+FROM stations_by_arrondissement
+WHERE arrondissement = 'Montrouge'
+LIMIT 5
+    Row(arrondissement='Montrouge', capacity=36, station_id='21219', name='Amaury Duval - Gabriel Péri')
+    Row(arrondissement='Montrouge', capacity=33, station_id='21215', name='Verdier - Jean Jaurès')
+    Row(arrondissement='Montrouge', capacity=31, station_id='21204', name="Estienne d'Orves - Henri Ginoux")
+    Row(arrondissement='Montrouge', capacity=30, station_id='21209', name='Molière - République')
+    Row(arrondissement='Montrouge', capacity=29, station_id='21207', name='Verdier - République')
+
+>>> SELECT COUNT(*) FROM stations
+    Row(count=1519)
+
+>>> SELECT arrondissement, capacity, station_id, name, numbikesavailable
+FROM stations_by_arrondissement
+WHERE arrondissement = 'Montrouge'
+LIMIT 5
+    Row(arrondissement='Montrouge', capacity=36, station_id='21219', name='Amaury Duval - Gabriel Péri', numbikesavailable=3)
+    Row(arrondissement='Montrouge', capacity=33, station_id='21215', name='Verdier - Jean Jaurès', numbikesavailable=18)
+    Row(arrondissement='Montrouge', capacity=31, station_id='21204', name="Estienne d'Orves - Henri Ginoux", numbikesavailable=0)
+    Row(arrondissement='Montrouge', capacity=30, station_id='21209', name='Molière - République', numbikesavailable=2)
+    Row(arrondissement='Montrouge', capacity=29, station_id='21207', name='Verdier - République', numbikesavailable=3)
+
+>>> SELECT COUNT(*) FROM stations
+    Row(count=1519)
+
+>>> SELECT COUNT(*) FROM stations_dispo
+    Row(count=1448)
+
+>>> SELECT COUNT(*) FROM stations_by_arrondissement
+    Row(count=1519)
+
+>>> SELECT * FROM stations LIMIT 5
+    Row(station_id='3004', capacity=18, latitude=48.867211201859, longitude=2.3635464370545, name='Place de la République - Temple', opening_hours=None)
+    Row(station_id='15061', capacity=22, latitude=48.83476837934194, longitude=2.284142297394666, name='Square Desnouettes', opening_hours=None)
+    Row(station_id='5018', capacity=37, latitude=48.848225572724, longitude=2.3502873256803, name='Mutualité', opening_hours=None)
+    Row(station_id='15047', capacity=52, latitude=48.83310149953933, longitude=2.299380004405976, name='Morillons - Dantzig', opening_hours=None)
+    Row(station_id='23202', capacity=28, latitude=48.801773795836, longitude=2.2874166362216, name='Henri Barbusse - Gabriel Péri', opening_hours=None)

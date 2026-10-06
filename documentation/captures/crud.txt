@@ -1,0 +1,20 @@
+
+========== queries/crud.sql ==========
+
+>>> SELECT * FROM stations WHERE station_id = '1117'
+    Row(station_id='1117', capacity=27, latitude=48.860089892617, longitude=2.344057559967, name='Pont Neuf - Rivoli', opening_hours=None)
+
+>>> INSERT INTO stations (station_id, name, capacity, latitude, longitude, opening_hours)
+VALUES ('99999', 'Station Démo', 10, 48.85, 2.35, null)
+
+>>> SELECT * FROM stations WHERE station_id = '99999'
+    Row(station_id='99999', capacity=10, latitude=48.85, longitude=2.35, name='Station Démo', opening_hours=None)
+
+>>> UPDATE stations SET capacity = 15 WHERE station_id = '99999'
+
+>>> SELECT * FROM stations WHERE station_id = '99999'
+    Row(station_id='99999', capacity=15, latitude=48.85, longitude=2.35, name='Station Démo', opening_hours=None)
+
+>>> DELETE FROM stations WHERE station_id = '99999'
+
+>>> SELECT * FROM stations WHERE station_id = '99999'
